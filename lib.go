@@ -7,12 +7,12 @@ import (
 
 var empty = struct{}{}
 
-func Domain(email string) string {
-	idx := strings.LastIndexByte(email, '@')
+func Domain(str string) string {
+	idx := strings.LastIndexByte(str, '@')
 	if idx == -1 {
-		panic(fmt.Errorf("email %s is missing domain", email))
+		return str
 	}
-	return email[idx+1:]
+	return str[idx+1:]
 }
 
 func IsPublicEmail(email string) bool {
