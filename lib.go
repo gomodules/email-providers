@@ -1,7 +1,6 @@
 package emailproviders
 
 import (
-	"fmt"
 	"strings"
 )
 
