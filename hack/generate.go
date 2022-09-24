@@ -3,8 +3,9 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
+	"os"
 	"strings"
 )
 
@@ -14,7 +15,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	data, err := ioutil.ReadAll(resp.Body)
+	data, err := io.ReadAll(resp.Body)
 	if err != nil {
 		panic(err)
 	}
@@ -39,7 +40,7 @@ var disposableEmailServices = map[string]struct{}{
 	out.WriteString(`
 }`)
 
-	err = ioutil.WriteFile("./disposable_email_services.go", out.Bytes(), 0644)
+	err = os.WriteFile("./disposable_email_services.go", out.Bytes(), 0644)
 	if err != nil {
 		panic(err)
 	}
